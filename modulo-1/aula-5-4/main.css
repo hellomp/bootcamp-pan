@@ -1,0 +1,29 @@
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#diagram {
+  position: relative;
+  background-color: #ecf0f1;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+#box {
+  position: absolute;
+  width: 100px;
+  text-align: center;
+  background-color: #2980b9;
+  padding: 6px 4px;
+  cursor: grab;
+  user-select: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+#box.dragging {
+  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+}
