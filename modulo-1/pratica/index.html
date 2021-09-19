@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Simulação de financiamento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section id="simulacao">
+        <h1>Simulação de financiamento</h1>
+        <div class="input-container">
+          <div>
+            <span>Valor</span>
+            <input id="valor" type="number" value="200000" />
+          </div>
+          <div>
+            <span>Prazo (anos)</span>
+            <input id="prazo-ano" type="number" value="20" />
+          </div>
+          <div class="span-container">
+            <span>Juros ao ano</span>
+            <input id="juros-ano" type="number" value="0.08" />
+          </div>
+        </div>
+      </section>
+      <section id="resultado">
+        <div class="result-container">
+          <div>
+            <span>Prazo (meses)</span>
+            <div id="prazo-mes">-</div>
+          </div>
+          <div>
+            <span>Juros ao mês</span>
+            <div id="juros-mes">-</div>
+          </div>
+          <div class="span-container">
+            <span>Juros acumulados</span>
+            <div id="juros-acum">-</div>
+          </div>
+        </div>
+        <div>
+          <table id="tabela">
+            <thead>
+              <th>Prestação</th>
+              <th>Amortização</th>
+              <th>Juros</th>
+              <th>Total</th>
+            </thead>
+            <tbody id="tabela-body">
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="main.js"></script>
+  </body>
+</html>

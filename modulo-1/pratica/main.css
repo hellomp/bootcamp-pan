@@ -1,0 +1,128 @@
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+}
+
+body {
+  background-color: #3498db;
+}
+
+#simulacao {
+  background-color: #2c3e50;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+#resultado {
+  background-color: #34495e;
+  padding: 20px;
+  border-radius: 0px 0px 18px 18px;
+  margin-top: -12px;
+  z-index: 1;
+  margin-left: 8px;
+  margin-right: 8px;
+  box-shadow: rgba(139, 81, 81, 0.1) 0px 20px 25px -5px,
+    rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+h1 {
+  margin-top: 0px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.container {
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0px auto;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container,
+.result-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.span-container {
+  grid-column: span 2;
+}
+
+@media (min-width: 580px) {
+  .input-container,
+  .result-container {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .span-container {
+    grid-column: span 1;
+  }
+}
+
+.input-container {
+  margin-bottom: 8px;
+}
+
+.result-container span,
+.input-container span {
+  margin-bottom: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-container div {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-container div {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+input {
+  border: 3px solid rgba(255, 255, 255, 0);
+  border-radius: 8px;
+  padding: 12px 8px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+input:focus-visible {
+  outline: none;
+  border: 3px solid #3498db;
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+tr td {
+  text-align: right;
+}
+
+tr td:first-child {
+  text-align: left;
+}
+
+tr th {
+  text-align: right;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+tr th:first-child {
+  text-align: left;
+}
