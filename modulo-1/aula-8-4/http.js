@@ -1,17 +1,17 @@
-function fetchJson(url, options) {
-  console.log("fetch");
-  return fetch(url, options)
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error(res.statusText);
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      throw error;
-    });
+import { printError } from "./main.js";
+
+async function fetchJson(url, options) {
+  try {
+    const res = await fetch(url, options);
+    if (res.ok) {
+      return await res.json();
+    } else {
+      throw new Error(res.statusText);
+    }
+  } catch (err) {
+    printError("Error loading data", err);
+    throw err;
+  }
 }
 
 export function listEmployees() {
@@ -23,7 +23,6 @@ export function listRoles() {
 }
 
 export function updateEmployee(id, employee) {
-  console.log("update");
   return fetchJson(`http://localhost:3000/employees/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -36,5 +35,11 @@ export function createEmployee(employee) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(employee),
+  });
+}
+
+export function deleteEmployee(id) {
+  return fetchJson(`http://localhost:3000/employees/${id}`, {
+    method: "DELETE",
   });
 }

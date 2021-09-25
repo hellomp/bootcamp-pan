@@ -3,20 +3,21 @@ import {
   listRoles,
   updateEmployee,
   createEmployee,
+  deleteEmployee,
 } from "./http.js";
 
 const listEl = document.querySelector("ul");
 const formEl = document.querySelector("form");
 const deleteBtn = document.getElementById("delete");
 const cancelBtn = document.getElementById("cancel");
-const updateBtn = document.getElementById("update");
-const createBtn = document.getElementById("create");
+const submitBtn = document.getElementById("submit");
 
 let employees,
   roles = [];
 let selectedItem;
 
 cancelBtn.addEventListener("click", clearSelection);
+deleteBtn.addEventListener("click", onDelete);
 formEl.addEventListener("submit", onSubmit);
 
 async function init() {
@@ -37,6 +38,7 @@ function selectItem(employee, li) {
   formEl.role.value = employee.role_id;
   deleteBtn.style.display = "inline";
   cancelBtn.style.display = "inline";
+  submitBtn.textContent = "Update";
 }
 
 function clearSelection() {
@@ -50,6 +52,8 @@ function clearSelection() {
   formEl.role.value = "";
   deleteBtn.style.display = "none";
   cancelBtn.style.display = "none";
+  submitBtn.textContent = "Create";
+  clearError();
 }
 
 async function onSubmit(evt) {
@@ -59,17 +63,35 @@ async function onSubmit(evt) {
     salary: formEl.salary.valueAsNumber,
     role_id: +formEl.role.value,
   };
-  if (selectedItem) {
-    const updatedEmployee = await updateEmployee(selectedItem.id, employeeData);
-    const i = employees.indexOf(selectedItem);
-    employees[i] = updatedEmployee;
-    renderData();
-    selectItem(updatedEmployee, listEl.children[i]);
+  if (!employeeData.name || !employeeData.salary || !employeeData.role_id) {
+    printError("Fill all form fields");
   } else {
-    const createdEmployee = await createEmployee(employeeData);
-    employees.push(createdEmployee);
+    if (selectedItem) {
+      const updatedEmployee = await updateEmployee(
+        selectedItem.id,
+        employeeData
+      );
+      const i = employees.indexOf(selectedItem);
+      employees[i] = updatedEmployee;
+      renderData();
+      selectItem(updatedEmployee, listEl.children[i]);
+    } else {
+      const createdEmployee = await createEmployee(employeeData);
+      employees.push(createdEmployee);
+      renderData();
+      selectItem(createdEmployee, listEl.lastChild);
+      listEl.lastChild.scrollIntoView();
+    }
+  }
+}
+
+async function onDelete() {
+  if (selectedItem) {
+    await deleteEmployee(selectItem.id);
+    const i = employees.indexOf(selectedItem);
+    employees.splice(i, 1);
     renderData();
-    selectItem(createdEmployee, listEl.lastChild);
+    clearSelection();
   }
 }
 
@@ -98,7 +120,13 @@ function renderRoles() {
   }
 }
 
-function printError(error) {
-  document.getElementById("error").textContent = "Erro ao carregar dados";
-  console.error(error);
+export function printError(message, error) {
+  document.getElementById("error").textContent = message;
+  if (error) {
+    console.error(error);
+  }
+}
+
+function clearError() {
+  document.getElementById("error").textContent = "";
 }
