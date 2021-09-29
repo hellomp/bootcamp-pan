@@ -2,6 +2,7 @@ const table = document.querySelector("table");
 const tbody = document.querySelector("tbody");
 const sortingSelect = document.querySelector("select");
 const filterContainer = document.getElementById("filter-container");
+const tableCount = document.getElementById("table-count");
 let checkboxes;
 
 let rawEmployees = [];
@@ -20,6 +21,7 @@ function renderData() {
   filterEmployees();
   sortEmployees();
   renderTable();
+  renderCount();
 }
 
 init();
@@ -120,4 +122,8 @@ function renderFilter() {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", renderData);
   });
+}
+
+function renderCount() {
+  tableCount.textContent = employees.length;
 }
