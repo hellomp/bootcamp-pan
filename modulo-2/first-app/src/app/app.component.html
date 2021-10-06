@@ -1,1 +1,6 @@
 <app-counter></app-counter>
+<hr />
+<h1 *ngIf="show">Element</h1>
+<button (click)="show = !show">Toggle</button>
+<hr />
+<app-todo-list></app-todo-list>
