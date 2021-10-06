@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+html {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  button {
+    margin-bottom: 2rem;
+  }
+  table {
+    border-collapse: collapse;
+    font-size: 2rem;
+    td {
+      border: 2px solid #000000;
+      width: 4rem;
+      height: 4rem;
+      text-align: center;
+      vertical-align: middle;
+    }
+  }
+}

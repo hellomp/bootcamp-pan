@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { C1Component } from './c1.component';
 import { C2Component } from './c2/c2.component';
 import { CounterComponent } from './counter/counter.component';
+import { BoardComponent } from './board/board.component';
 
 @NgModule({
-  declarations: [AppComponent, C1Component, C2Component, CounterComponent],
+  declarations: [AppComponent, C1Component, C2Component, CounterComponent, BoardComponent],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
