@@ -7,14 +7,15 @@ import { TodoItem } from './todoItem';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent {
+  newTask: string = '';
   tasks: TodoItem[] = [
     { description: 'Buy eggs', done: true },
     { description: 'Clean house', done: false },
   ];
 
-  addTask(description: string) {
+  addTask() {
     this.tasks.push({
-      description,
+      description: this.newTask,
       done: false,
     });
   }

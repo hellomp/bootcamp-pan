@@ -1,6 +1,24 @@
+<!-- COUNTER-->
 <app-counter></app-counter>
+<!-- TOGGLE-->
 <hr />
 <h1 *ngIf="show">Element</h1>
 <button (click)="show = !show">Toggle</button>
+<!-- TODO LIST -->
 <hr />
 <app-todo-list></app-todo-list>
+<!-- MOVIE LIST -->
+<hr />
+<h1>Movies</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Note</th>
+  </tr>
+  <tr *ngFor="let movie of movies">
+    <td>{{ movie.title }}</td>
+    <td>
+      <app-rating [(rating)]="movie.rating"></app-rating>
+    </td>
+  </tr>
+</table>

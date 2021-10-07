@@ -5,12 +5,12 @@
   <div *ngSwitchDefault>{{ tasks.length }} tarefas</div>
 </div>
 <div>
-  <input #inputDescription type="text" placeholder="Task description" />
-  <button (click)="addTask(inputDescription.value)">Add</button>
+  <input type="text" placeholder="Task description" [(ngModel)]="newTask" />
+  <button (click)="addTask()">Add</button>
 </div>
 <ul *ngFor="let task of tasks; let i = index">
   <li>
-    <input type="checkbox" [checked]="task.done" /> {{ task.description }}
+    <input type="checkbox" ([ngModel])="(task.done)" /> {{ task.description }}
     <button (click)="deleteTask(i)">X</button>
   </li>
 </ul>
