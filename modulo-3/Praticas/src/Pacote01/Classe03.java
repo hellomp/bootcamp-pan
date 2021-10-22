@@ -14,6 +14,7 @@ public class Classe03 {
         nota3 = input.nextDouble();
         System.out.println("Digite a frequencia nota");
         frequencia = input.nextDouble();
+        input.close();
 
         notaTotal = nota1 + nota2 + nota3;
         if(notaTotal >= notaCorte && frequencia >= freqCorte)

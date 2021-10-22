@@ -10,6 +10,7 @@ public class Classe01 {
         n1 = input.nextDouble();
         System.out.println("Digite o valor para n2");
         n2 = input.nextDouble();
+        input.close();
         resultado = n1 * n2 / n3;
         System.out.printf("O valor total é %.2f.", resultado);
     }
