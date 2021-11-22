@@ -1,0 +1,25 @@
+<div>
+  <div>
+    {{ titulo }}
+  </div>
+  <div *ngIf="escolhaAte === 3">
+    Escolha até {{ escolhaAte }}
+    <ng-container *ngIf="opcoesSelecionadas.length !== 0">
+      ({{
+        opcoesSelecionadas.length === 1
+          ? "1 escolhida"
+          : opcoesSelecionadas.length + " escolhidas"
+      }})
+    </ng-container>
+  </div>
+</div>
+<div *ngFor="let opcao of opcoes">
+  <label
+    ><input
+      [type]="escolhaAte == 1 ? 'radio' : 'checkbox'"
+      [checked]="opcoesSelecionadas.indexOf(opcao) !== -1"
+      (change)="toggleOpcao(opcao)"
+      [disabled]="opcaoSelecionada(opcao)"
+    />{{ opcao }}</label
+  >
+</div>
